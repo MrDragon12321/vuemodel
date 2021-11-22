@@ -2,7 +2,7 @@ const webpack = require('webpack')
 
 module.exports = {
 	productionSourceMap: false,
-	outputDir: "../dist", // 输出文件目录
+	outputDir: "./dist", // 输出文件目录
 	devServer: {
 		port: 1130,
 		proxy: {
