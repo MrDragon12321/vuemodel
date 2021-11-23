@@ -2,7 +2,7 @@ export default {
     path: "/home",
     name: "home",
     redirect:"/home/page1",
-    component: () => import(/* webpackChunkName: "register" */ '@/views/Home/Home.vue'),
+    component: () => import(/* webpackChunkName: "register" */ '@/views/Home/HomeTopNav.vue'),
     children: [
         {
             path: "page1",

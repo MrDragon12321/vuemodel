@@ -39,19 +39,16 @@ export default {
   height: 100%;
   .el-container {
     height: 100%;
-  
     .el-header {
       height: 7rem !important;
-      line-height:7rem;
+      line-height: 7rem;
       box-shadow: 0 0.2rem 1rem gray;
       background-color: #545c64;
-     
-    
     }
     .el-container {
       .el-aside {
         background-color: #545c64;
-         border-top: 0.1rem #fff solid;
+        border-top: 0.1rem #fff solid;
       }
       .el-main {
         padding: 0;
