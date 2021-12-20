@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TopNav from '../../components/TopNav.vue'
+import TopNav from '../../../components/TopNav.vue'
 export default {
   components: { TopNav },
   data() {
@@ -32,7 +32,7 @@ export default {
   .main {
     padding-top: 1rem;
     width: 90%;
-    height: calc(100% - 81px);
+    height: calc(100% - 8.1rem);
     margin: auto;
   }
 }

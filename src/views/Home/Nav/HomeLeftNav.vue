@@ -5,11 +5,12 @@
         <TopHeader />
       </el-header>
       <el-container>
-        <el-aside width="15rem">
+        <el-aside width="20rem">
           <!-- <el-menu :default-openeds="['1', '3']"> -->
           <LeftNav />
         </el-aside>
         <el-main>
+          <Tags />
           <div class="main_card">
             <router-view></router-view>
           </div>
@@ -21,8 +22,9 @@
 <script>
 import LeftNav from '@/components/LeftNav.vue'
 import TopHeader from '@/components/TopHeader.vue'
+import Tags from '@/components/Tags.vue'
 export default {
-  components: { LeftNav, TopHeader },
+  components: { LeftNav, TopHeader, Tags },
   data() {
     return {
 
@@ -40,8 +42,8 @@ export default {
   .el-container {
     height: 100%;
     .el-header {
-      height: 7rem !important;
-      line-height: 7rem;
+      height: 8rem !important;
+      line-height: 8rem;
       box-shadow: 0 0.2rem 1rem gray;
       background-color: #545c64;
     }
@@ -51,12 +53,12 @@ export default {
         border-top: 0.1rem #fff solid;
       }
       .el-main {
-        padding: 0;
+        padding:1rem;
         overflow: hidden;
         .main_card {
           padding: 1rem;
           width: 100%;
-          height: 100%;
+          height: 95%;
           box-shadow: 0 0 0.5rem gray;
           box-sizing: border-box;
         }

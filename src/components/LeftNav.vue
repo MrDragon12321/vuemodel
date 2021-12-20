@@ -5,64 +5,119 @@
       text-color="#fff"
       active-text-color="#ffd04b"
       :unique-opened="true"
-      :default-openeds="['1']"
+      router
+      :default-active="$route.path"
+      @select="navSelect"
     >
-      <el-submenu index="1">
-        <template slot="title"><i class="el-icon-message"></i>导航一</template>
-        <el-menu-item-group>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-          <el-menu-item index="1-3">选项3</el-menu-item>
-          <el-menu-item index="1-4">选项4</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
-      <el-submenu index="2">
-        <template slot="title"><i class="el-icon-menu"></i>导航二</template>
-        <el-menu-item-group>
-          <template slot="title">分组一</template>
-          <el-menu-item index="2-1">选项1</el-menu-item>
-          <el-menu-item index="2-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="2-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="2-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="2-4-1">选项4-1</el-menu-item>
+      <div
+        v-for="(item, index) in homeRouters"
+        :key="index"
+      >
+        <!--二级菜单-->
+
+        <el-submenu
+          :index="index+''"
+          v-if='!item.leaf'
+        >
+          <template slot="title">
+            <i :class="item.iconCls"></i>
+            <span>{{item.name}}</span>
+          </template>
+          <el-menu-item
+            :index="child.path"
+            :key="indexs"
+            v-for="(child, indexs) in item.children"
+          >
+            {{child.name}}
+            <el-badge
+              v-if="child.value"
+              class="item"
+              :max='99'
+              :value="child.value"
+            />
+          </el-menu-item>
+
         </el-submenu>
-      </el-submenu>
-      <el-submenu index="3">
-        <template slot="title"><i class="el-icon-setting"></i>导航三</template>
-        <el-menu-item-group>
-          <template slot="title">分组一</template>
-          <el-menu-item index="3-1">选项1</el-menu-item>
-          <el-menu-item index="3-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="3-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="3-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
+
+        <!--一级菜单-->
+        <template v-else>
+          <el-menu-item :index="item.path">
+            <template slot="title">
+              <span>{{item.name}}</span>
+              <el-badge
+                v-if="item.value"
+                class="item"
+                :max='99'
+                :value="item.value"
+              />
+            </template>
+          </el-menu-item>
+        </template>
+        <!-- <subMenu v-else :data="item" :key="key"></subMenu> -->
+      </div>
     </el-menu>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      homeRouters: [],
+    }
+  },
+  methods: {
+    navSelect() {
+      if (this.$route.name) {
+        const route = this.$route
+        this.$store.dispatch('addVisitedViews', route);
+      }
+    },
 
+  },
+  // created() {
+
+  //   const route = this.$route
+  //   this.$store.dispatch('addVisitedViews', route);
+  // },
+
+  /*  computed: {
+      activeIndex() {
+        const { name } = this.$route;
+       console.log(name);
+       return null
+      },
+    }, */
+  mounted() {
+
+    this.homeRouters = this.$router.options.routes[3].children
+  },
+  // watch: {
+  //   $route: {
+  //     handler(val, oldval) {
+       
+  //         const route = this.$route
+  //         this.$store.dispatch('addVisitedViews', route);
+        
+  //     },
+  //     // 深度观察监听
+  //     deep: true
+  //   }
+  // }
 }
 </script>
 
 <style lang="less">
 .el-menu {
   .el-submenu {
-    width: 15rem;
-    .el-menu-item {
-      min-width: 0 !important;
-    }
+    width: 20rem;
   }
+  .el-menu-item {
+    width: 20rem !important;
+  }
+}
+.item {
+  margin-left: 1rem;
+  margin-top: -0.5rem;
 }
 </style>

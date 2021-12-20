@@ -17,6 +17,7 @@ export default {
   methods: {
     exit() {
       this.$router.push('/signin')
+      this.$store.dispatch('clearViews')
     }
   }
 }

@@ -61,7 +61,7 @@ export default {
     top: 15rem;
     width: 60rem;
     height: 40rem;
-    box-shadow: 0px 0px 2rem gray;
+    box-shadow: 0 0 2rem gray;
     border-radius: 2rem;
     display: flex;
    

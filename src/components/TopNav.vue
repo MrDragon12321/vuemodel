@@ -43,18 +43,18 @@ export default {
 }
 .el-menu--horizontal > .el-menu-item.is-active,
 .el-menu--horizontal > .el-submenu.is-active .el-submenu__title {
-  border-bottom: 5px solid #000;
+  border-bottom:0.5rem solid #000;
   color: #303133;
   font-size: 1.6rem;
 }
 
 .el-menu--horizontal > .el-menu-item,
 .el-menu--horizontal > .el-submenu .el-submenu__title {
-  height: 80px;
-  line-height: 80px;
+  height: 8rem;
+  line-height: 8rem;
   color: #999690;
   font-size: 1.4rem;
   font-weight: 550;
-  width: 150px;
+  width: 15rem;
 }
 </style>

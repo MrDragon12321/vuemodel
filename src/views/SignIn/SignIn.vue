@@ -41,7 +41,7 @@ export default {
     },
     toHome() {
       this.$router.push("/home")
-      this.$store.commit('SET_USERINFO', { "userName": this.username, "password": this.password })
+      this.$store.dispatch('addUserInfo', { "userName": this.username, "password": this.password })
     }
   }
 }
@@ -57,7 +57,7 @@ export default {
   .sign_card {
     width: 90rem;
     height: 55rem;
-    box-shadow: 0px 0px 2rem gray;
+    box-shadow: 0 0 2rem gray;
     display: flex;
     justify-content: center;
     align-items: center;
