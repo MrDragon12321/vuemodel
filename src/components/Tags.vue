@@ -21,7 +21,7 @@ export default {
   data() {
     return {
     }
-  },
+  }, 
   methods: {
     isActive(route) {
       return route.path == this.$route.path

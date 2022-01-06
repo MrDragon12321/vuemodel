@@ -17,7 +17,7 @@ if (isServer) {
 	// store.commit('SET_LOCATION',{
 	// 	origin:origin+'/api'
 	// });
-	axios.defaults.baseURL = 'http://eip.2.yuantongjy.com';
+	axios.defaults.baseURL = 'api';
 }
 
 class AppLoading {
@@ -52,13 +52,7 @@ axios.interceptors.request.use(config => {
 
 axios.interceptors.response.use(response => {
 	appLoading.close();
-	if (response.data.code == 1000) {
-		return Promise.resolve(response.data.data)
-	} else {
-		Message.error(response.data.msg)
-	}
-
-
+	return Promise.resolve(response)
 }, err => {
 	appLoading.close();
 	return Promise.reject(err)

@@ -5,9 +5,9 @@
         <TopHeader />
       </el-header>
       <el-container>
-        <el-aside width="20rem">
+        <el-aside :width="isOpen?'20rem':'8rem'">
           <!-- <el-menu :default-openeds="['1', '3']"> -->
-          <LeftNav />
+          <LeftNav @navWidth='changeWidth' />
         </el-aside>
         <el-main>
           <Tags />
@@ -27,11 +27,13 @@ export default {
   components: { LeftNav, TopHeader, Tags },
   data() {
     return {
-
+      isOpen: true
     }
   },
   methods: {
-
+    changeWidth(e) {
+    this.isOpen=!e
+    }
   }
 }
 </script>
@@ -53,7 +55,7 @@ export default {
         border-top: 0.1rem #fff solid;
       }
       .el-main {
-        padding:1rem;
+        padding: 1rem;
         overflow: hidden;
         .main_card {
           padding: 1rem;

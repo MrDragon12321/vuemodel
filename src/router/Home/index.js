@@ -9,6 +9,7 @@ export default {
             name:"首页",
             leaf:true,
             value:12,
+            iconCls:"el-icon-s-home",
             component:() => import(/* webpackChunkName: "register" */ '@/views/Home/Welcome.vue'),
         },
         {
@@ -16,6 +17,7 @@ export default {
             name: "导航一",
             leaf: false,//多个节点
             redirect:"/page11",
+            iconCls:"el-icon-user-solid",
             component: () => import(/* webpackChunkName: "page1" */ '@/views/Home/Page1'),
             children: [
                 {
@@ -41,6 +43,7 @@ export default {
             name: "导航二",
             leaf:true,//无节点
             value:'',
+            iconCls:"el-icon-present",
             component: () => import(/* webpackChunkName: "page1" */ '@/views/Home/Page2/Page21.vue'),
         },
         {
@@ -48,6 +51,7 @@ export default {
             name: "导航三",
             leaf: false,//多个节点
             redirect:"/page31",
+            iconCls:"el-icon-bank-card",
             component: () => import(/* webpackChunkName: "page1" */ '@/views/Home/Page1'),
             children: [
                 {
